@@ -8,13 +8,6 @@ from azure.storage.blob import BlobServiceClient
 st.set_page_config(page_title="Stats", layout="wide")
 st.title("📊 School Stats")
 
-# @st.cache_data
-# def load_data():
-#     with open("student_data.json") as f:
-#         return json.load(f)
-
-# data = load_data()
-
 @st.cache_data
 def load_data_from_azure():
     connection_string = st.secrets['AZURE_STORAGE_CONNECTION_STRING']

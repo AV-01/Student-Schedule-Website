@@ -1,2 +1,23 @@
-# Student-Schedule-Website 2
-website that displays student schedules at rhs from 23-24
+# Rocklin High Student Directory (2023–2024)
+
+A searchable, filterable, and paginated directory of all Rocklin High School students from the 2023–24 school year — built in **Python** using **Streamlit**, with data securely hosted on **Azure Blob Storage**.
+
+---
+
+## Features
+
+- **Search** by name or student ID  
+- **Filters** for grade, class name, and teacher  
+- **Pagination** for fast rendering  
+- **Light/Dark mode toggle**  
+- **Statistics dashboard** with charts  
+- **Multipage layout**: Home, Stats, FAQ, About  
+- **Secure cloud storage** with Azure
+
+---
+
+## Security
+
+All student data is uploaded to Azure, where it is encrypted and accessed through their API. Data retreival is usually fast, but might take some time to laod. The API key is stored on Streamlit and encrypted, and never accessed locally. The cost is very cheap, less than $0.01 a month. Only way to access data is through website.
+
+But even so, this data in PDF form is given to almost every student in yearbook. It's not *that* secretive.

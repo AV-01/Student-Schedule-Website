@@ -6,13 +6,6 @@ from azure.storage.blob import BlobServiceClient
 
 st.set_page_config(page_title="Student Directory", layout="wide")
 
-# @st.cache_data
-# def load_data():
-#     with open("student_data.json") as f:
-#         return json.load(f)
-
-# data = load_data()
-
 @st.cache_data
 def load_data_from_azure():
     connection_string = st.secrets['AZURE_STORAGE_CONNECTION_STRING']
@@ -27,13 +20,11 @@ def load_data_from_azure():
 
 data = load_data_from_azure()
 
-test
+
 
 with st.sidebar:
     st.title("Filters")
-    # st.session_state.dark_mode = st.checkbox("🌙 Dark Mode", value=st.session_state.dark_mode)
 
-    # grades = sorted(set(student["grade"] for student in data))
     grades = ['8', '9', '10', '11', '12']
     teachers = sorted({info["teacher_name"].strip() for student in data for info in student["periods"].values()})
     classes = sorted({info["class_name"].strip() for student in data for info in student["periods"].values()})
@@ -92,15 +83,3 @@ else:
                         f"&nbsp;&nbsp;&nbsp;&nbsp;📍 **Room**: `{info['room_num']}`  \n"
                         f"&nbsp;&nbsp;&nbsp;&nbsp;👨‍🏫 **Teacher**: `{info['teacher_name'].strip()}`"
                     )
-
-# if st.session_state.dark_mode:
-#     st.markdown(
-#         """
-#         <style>
-#         body {
-#             background-color: #0e1117;
-#             color: #cfcfcf;
-#         }
-#         </style>
-#         """, unsafe_allow_html=True
-#     )

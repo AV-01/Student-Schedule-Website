@@ -56,12 +56,34 @@ for student in data:
     filtered.append(student)
 
 students_per_page = 12
-total_pages = math.ceil(len(filtered) / students_per_page)
-try:
-    current_page = st.slider("Page", 1, total_pages, 1)
-except:
-    current_page = st.slider("Page", 1, 2, 1)
-start_idx = (current_page - 1) * students_per_page
+total_pages = max(1, math.ceil(len(filtered) / students_per_page))  # Ensure at least 1 page
+
+# Initialize session state
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = 1
+
+# # Layout: [small] Previous | [large] Slider | [small] Next
+# col1, col2, col3 = st.columns([1, 6, 1])
+
+# with col1:
+#     if st.button("⬅️", use_container_width=True) and st.session_state.current_page > 1:
+#         st.session_state.current_page -= 1
+
+# with col3:
+#     if st.button("➡️", use_container_width=True) and st.session_state.current_page < total_pages:
+#         st.session_state.current_page += 1
+
+st.session_state.current_page = st.slider(
+    "Page",
+    min_value=1,
+    max_value=total_pages,
+    value=st.session_state.current_page,
+    key="page_slider",
+    label_visibility="collapsed",  # Hides "Page" label for a cleaner look
+)
+
+# Pagination logic
+start_idx = (st.session_state.current_page - 1) * students_per_page
 end_idx = start_idx + students_per_page
 visible_students = filtered[start_idx:end_idx]
 
@@ -83,3 +105,14 @@ else:
                         f"&nbsp;&nbsp;&nbsp;&nbsp;📍 **Room**: `{info['room_num']}`  \n"
                         f"&nbsp;&nbsp;&nbsp;&nbsp;👨‍🏫 **Teacher**: `{info['teacher_name'].strip()}`"
                     )
+
+
+col1, col2, col3 = st.columns([1, 6, 1])
+
+with col1:
+    if st.button("⬅️", use_container_width=True) and st.session_state.current_page > 1:
+        st.session_state.current_page -= 1
+
+with col3:
+    if st.button("➡️", use_container_width=True) and st.session_state.current_page < total_pages:
+        st.session_state.current_page += 1

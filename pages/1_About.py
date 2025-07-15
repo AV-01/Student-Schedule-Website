@@ -4,20 +4,21 @@ st.set_page_config(page_title="About", layout="centered")
 st.title("📘 About This Project")
 
 st.markdown("""            
-this is a searchable directory containing all students that go to RHS during the 2023-2024 school year.
-at the time im making this(2025), this data is 2 years old and extremeley outdated. 
-but, i just happened to have the data and figured i would do something with it.
+this is a searchable directory containing all students that went to RHS during from 2023 to 2024.
+the data is 2 years old, but i just got the data for a couple other years, so i will implement those. 
 
 aside from just being a raw directory, i put in some search and filter features, and a stats page.
                         
 made over ~3 hours with python.
             
 ### check out some of our best graduates
+- sunny liu: harvard '27 (she's not in the directory yet)
 - nihar mudigonda: stanford '28
 - giselle kirchner: princeton '28
 - simran saluja: upenn '29
 - gargi jejurikar: uc berkeley '29
 - alex lin: ucla '29
+- mateo lopez: uchicago '29
 - aryavrat mishra: soon
 - and many more...
 

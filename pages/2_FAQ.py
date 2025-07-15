@@ -19,7 +19,7 @@ I completely understand. I'll create a function that will remove it for you auto
 **Q: This data is old. Can you make a new one that's more recent?**     
 I would need the data first, which I don't have. If I get my hands on it, maybe...
             
-**Q: I have some ideas! Could you add..."**     
+**Q: I have some ideas! Could you add...**     
 I would love to hear your idea! Contact me on discord(**.secretspy**) and I'll get back to u.
 """)
 

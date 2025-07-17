@@ -170,9 +170,9 @@ else:
         teachers = sorted({info["teacher_name"].strip() for student in data for info in student["periods"].values()})
         classes = sorted({info["class_name"].strip() for student in data for info in student["periods"].values()})
 
-        selected_grade = st.selectbox("Grade", ["All"] + grades)
-        selected_class = st.selectbox("Class Name", ["All"] + classes)
-        selected_teacher = st.selectbox("Teacher", ["All"] + teachers)
+        selected_grades = st.multiselect("Grade(s)", grades, default=grades)
+        selected_classes = st.multiselect("Class Name(s)", classes, default=[])
+        selected_teachers = st.multiselect("Teacher(s)", teachers, default=[])
         query = st.text_input("Search name")
 
         st.markdown(
@@ -190,11 +190,11 @@ else:
             continue
         if query.lower() not in student["name"].lower():
             continue
-        if selected_grade != "All" and student["grade"] != selected_grade:
+        if selected_grades and student["grade"] not in selected_grades:
             continue
-        if selected_class != "All" and all(info["class_name"].strip() != selected_class for info in student["periods"].values()):
+        if selected_classes and not any(info["class_name"].strip() in selected_classes for info in student["periods"].values()):
             continue
-        if selected_teacher != "All" and all(info["teacher_name"].strip() != selected_teacher for info in student["periods"].values()):
+        if selected_teachers and not any(info["teacher_name"].strip() in selected_teachers for info in student["periods"].values()):
             continue
         filtered.append(student)
 

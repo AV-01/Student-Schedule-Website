@@ -12,7 +12,7 @@ st.title("📊 School Stats")
 def load_data_from_azure():
     connection_string = st.secrets['AZURE_STORAGE_CONNECTION_STRING']
     container_name = "personal"
-    blob_name = "student_data.json"
+    blob_name = "student_data 23-24.json"
 
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)

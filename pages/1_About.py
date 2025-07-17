@@ -9,10 +9,11 @@ the data is 2 years old, but i just got the data for a couple other years, so i 
 
 aside from just being a raw directory, i put in some search and filter features, and a stats page.
                         
-made over ~3 hours with python.
+made entirely with python.
             
 ### check out some of our best graduates
-- sunny liu: harvard '27 (she's not in the directory yet)
+- christopher franco: mit '27
+- sunny liu: harvard '27
 - nihar mudigonda: stanford '28
 - giselle kirchner: princeton '28
 - simran saluja: upenn '29

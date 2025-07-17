@@ -25,4 +25,6 @@ But even so, this data in PDF form is given to almost every student in yearbook.
 
 ## Versions
 
-Version 1.0.0 - the current version. student directory for 2023-2024, along with filters/search, statistics, and secure storage.
+Version 1.0.0 - student directory for 2023-2024, along with filters/search, statistics, and secure storage.
+Version 1.0.1 - typo fixes and created "dev log"
+Version 1.1.0 - added data for additional years

@@ -6,24 +6,40 @@ from azure.storage.blob import BlobServiceClient
 
 st.set_page_config(page_title="Student Directory", layout="wide")
 
+
 @st.cache_data
 def load_data_from_azure():
     connection_string = st.secrets['AZURE_STORAGE_CONNECTION_STRING']
     container_name = "personal"
-    blob_name = "student_data.json"
+    blobs = {
+        # "22-23": "student_data 22-23.json",
+        "23-24": "student_data 23-24.json"
+        # "24-25": "student_data 24-25.json"
+    }
 
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
-
-    blob_data = blob_client.download_blob().readall()
-    return json.loads(blob_data)
+    combined_data = []
+    
+    for year, blob_name in blobs.items():
+        blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+        blob_data = blob_client.download_blob().readall()
+        year_data = json.loads(blob_data)
+        
+        # Add year tag to each student
+        for student in year_data:
+            student["year"] = year
+        
+        combined_data.extend(year_data)
+    
+    return combined_data
 
 data = load_data_from_azure()
 
-
-
 with st.sidebar:
     st.title("Filters")
+
+    years = sorted(set(student["year"] for student in data))
+    selected_years = st.multiselect("Academic Year(s)", years, default=years)
 
     grades = ['8', '9', '10', '11', '12']
     teachers = sorted({info["teacher_name"].strip() for student in data for info in student["periods"].values()})
@@ -45,6 +61,8 @@ with st.sidebar:
 
 filtered = []
 for student in data:
+    if student["year"] not in selected_years:
+        continue
     if query.lower() not in student["name"].lower():
         continue
     if selected_grade != "All" and student["grade"] != selected_grade:
@@ -65,39 +83,7 @@ start_idx = (current_page - 1) * students_per_page
 end_idx = start_idx + students_per_page
 visible_students = filtered[start_idx:end_idx]
 
-# students_per_page = 12
-# total_pages = max(1, math.ceil(len(filtered) / students_per_page))  # Ensure at least 1 page
-
-# Initialize session state
-# if 'current_page' not in st.session_state:
-#     st.session_state.current_page = 1
-
-# # Layout: [small] Previous | [large] Slider | [small] Next
-# col1, col2, col3 = st.columns([1, 6, 1])
-
-# with col1:
-#     if st.button("⬅️", use_container_width=True) and st.session_state.current_page > 1:
-#         st.session_state.current_page -= 1
-
-# with col3:
-#     if st.button("➡️", use_container_width=True) and st.session_state.current_page < total_pages:
-#         st.session_state.current_page += 1
-
-# st.session_state.current_page = st.slider(
-#     "Page",
-#     min_value=1,
-#     max_value=total_pages,
-#     value=st.session_state.current_page,
-#     key="page_slider",
-#     label_visibility="collapsed",  # Hides "Page" label for a cleaner look
-# )
-
-# Pagination logic
-# start_idx = (st.session_state.current_page - 1) * students_per_page
-# end_idx = start_idx + students_per_page
-# visible_students = filtered[start_idx:end_idx]
-
-st.title("📚 Student Directory(2023-2024)")
+st.title("📚 Student Directory")
 st.caption(f"Showing {len(visible_students)} of {len(filtered)} result(s)")
 
 if not visible_students:
@@ -115,14 +101,3 @@ else:
                         f"&nbsp;&nbsp;&nbsp;&nbsp;📍 **Room**: `{info['room_num']}`  \n"
                         f"&nbsp;&nbsp;&nbsp;&nbsp;👨‍🏫 **Teacher**: `{info['teacher_name'].strip()}`"
                     )
-
-
-# col1, col2, col3 = st.columns([1, 6, 1])
-
-# with col1:
-#     if st.button("⬅️", use_container_width=True) and st.session_state.current_page > 1:
-#         st.session_state.current_page -= 1
-
-# with col3:
-#     if st.button("➡️", use_container_width=True) and st.session_state.current_page < total_pages:
-#         st.session_state.current_page += 1

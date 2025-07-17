@@ -12,6 +12,7 @@ so it might take some time until you see changes. here are some of the plans for
             
 ## 🟢 high priority(aka easy stuff)
 - add data from 2022-2023 and 2024-2025 year!
+- add multiselect features
 - more stats for people to analyze
 - add buttons for slider(help with page navigation)
 - remove "enrichment" from popular classes

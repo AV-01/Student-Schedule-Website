@@ -9,9 +9,15 @@ all code is open source! check out my [github](https://github.com/AV-01/Student-
 
 working on adding more stuff to this website. however, i'm a one man team and i'm dividing up my focus between other projects, 
 so it might take some time until you see changes. here are some of the plans for the future:
-            
+
+## 🎮 version control
+
+**Version 1.0.0** - student directory for 2023-2024, along with filters/search, statistics, and secure storage.
+Version 1.0.1 - typo fixes and created "dev log"        
+**Version 2.0.0** - added data for additional years, implemented security protocols
+
 ## 🟢 high priority(aka easy stuff)
-- add data from 2022-2023 and 2024-2025 year!
+- ~add data from 2022-2023 and 2024-2025 year!~
 - add multiselect features
 - more stats for people to analyze
 - add buttons for slider(help with page navigation)
@@ -23,7 +29,7 @@ so it might take some time until you see changes. here are some of the plans for
 - add an "opt out" page for people to remove themselves from the database
 - setup a form or something so i don't have to keep giving out my discord
                                     
-### 🕰️ total hours wasted: 5
+### 🕰️ total hours wasted: 11
 """)
 
 st.markdown(

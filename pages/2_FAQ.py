@@ -16,9 +16,9 @@ Data is loaded from a JSON file cached in memory for performance. I will not giv
 **Q: I don't want my data here. How do I remove it?**   
 I completely understand. I'll create a function that will remove it for you automatically. In the mean time, contact me on discord(**.secretspy**) and I'll remove it.
             
-**Q: This data is old. Can you make a new one that's more recent?**     
-I would need the data first, which I don't have. If I get my hands on it, maybe...
-            
+**Q: Wow, this is great! Can I have the 25-26 school year now?**     
+That would go into a paid tier.
+
 **Q: I have some ideas! Could you add...**     
 I would love to hear your idea! Contact me on discord(**.secretspy**) and I'll get back to u.
 """)

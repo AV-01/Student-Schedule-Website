@@ -4,10 +4,10 @@ st.set_page_config(page_title="About", layout="centered")
 st.title("📘 About This Project")
 
 st.markdown("""            
-this is a searchable directory containing all students that went to RHS during from 2023 to 2024.
-the data is 2 years old, but i just got the data for a couple other years, so i will implement those. 
+this is a searchable directory containing all students that went to RHS during from 2022 to 2025.
+this is the best available, open source directory out there. within one search, you can find anyone you're looking for.
 
-aside from just being a raw directory, i put in some search and filter features, and a stats page.
+aside from just being a raw directory, i put in some search and filter features, and a stats page. more features to come soon!
                         
 made entirely with python.
             

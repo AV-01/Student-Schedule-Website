@@ -12,7 +12,7 @@ A searchable, filterable, and paginated directory of all Rocklin High School stu
 - **Statistics dashboard** with charts  
 - **Multipage layout**: Home, Stats, FAQ, About  
 - **Secure cloud storage** with Azure
-
+- **Required Login** in order to limit access to only RHS students
 ---
 
 ## Security
